@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
 
     const navLinks = [
         { name: 'Projects', href: '#projects' },
@@ -11,6 +12,34 @@ export default function Navbar() {
         { name: 'Contact', href: '#contact' },
     ];
 
+    // Track active section on scroll using IntersectionObserver
+    useEffect(() => {
+        const sections = navLinks
+            .map((link) => document.getElementById(link.href.replace('#', '')))
+            .filter(Boolean);
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        sections.forEach((section) => {
+            if (section) observer.observe(section);
+        });
+
+        return () => {
+            sections.forEach((section) => {
+                if (section) observer.unobserve(section);
+            });
+        };
+    }, [navLinks]);
+
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
         setMobileMenuOpen(false);
@@ -19,6 +48,7 @@ export default function Navbar() {
 
         if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
+            setActiveSection(targetId);
         }
     };
 
@@ -36,19 +66,29 @@ export default function Navbar() {
 
                 {/* Desktop Links */}
                 <nav className="hidden items-center gap-8 md:flex">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            onClick={(e) => handleScroll(e, link.href)}
-                            className="text-xs font-medium text-zinc-400 transition hover:text-orange-400"
-                        >
-                            {link.name}
-                        </a>
-                    ))}
+                    {navLinks.map((link) => {
+                        const targetId = link.href.replace('#', '');
+                        const isActive = activeSection === targetId;
+
+                        return (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                onClick={(e) => handleScroll(e, link.href)}
+                                className={`relative py-1 text-xs font-medium transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full ${
+                                    isActive
+                                        ? 'text-orange-400 font-semibold after:w-full'
+                                        : 'text-zinc-400 hover:text-orange-400'
+                                }`}
+                            >
+                                {link.name}
+                            </a>
+                        );
+                    })}
                     <a
-                        href="/cv.pdf"
+                        href="/images/cv.jpg"
                         target="_blank"
+                        download="Haziq_CV.jpg"
                         rel="noopener noreferrer"
                         className="rounded-lg border border-orange-500/40 bg-orange-500/10 px-3.5 py-1.5 text-xs font-semibold text-orange-400 transition hover:bg-orange-500 hover:text-white"
                     >
@@ -79,19 +119,27 @@ export default function Navbar() {
             {mobileMenuOpen && (
                 <div className="border-b border-zinc-800 bg-zinc-950 px-6 py-6 md:hidden">
                     <nav className="flex flex-col gap-4">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                onClick={(e) => handleScroll(e, link.href)}
-                                className="text-sm font-medium text-zinc-300 transition hover:text-orange-400"
-                            >
-                                {link.name}
-                            </a>
-                        ))}
+                        {navLinks.map((link) => {
+                            const targetId = link.href.replace('#', '');
+                            const isActive = activeSection === targetId;
+
+                            return (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={(e) => handleScroll(e, link.href)}
+                                    className={`text-sm font-medium transition hover:text-orange-400 ${
+                                        isActive ? 'text-orange-400 font-semibold' : 'text-zinc-300'
+                                    }`}
+                                >
+                                    {link.name}
+                                </a>
+                            );
+                        })}
                         <a
-                            href="/cv.pdf"
+                            href="/images/cv.jpg"
                             target="_blank"
+                            download="Haziq_CV.jpg"
                             rel="noopener noreferrer"
                             className="mt-2 text-center rounded-lg border border-orange-500/50 bg-orange-500/10 px-4 py-2.5 text-xs font-semibold text-orange-400"
                         >

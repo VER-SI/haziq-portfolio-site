@@ -8,14 +8,17 @@ import Contact from "./components/Contact";
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Skills />
-      <Experience />
-      <Education />
-      <Projects />
-      <Contact />
-    </>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 antialiased scroll-smooth">
+<Navbar />
+<main>
+<Hero />
+<Projects />
+<Experience />
+<Education />
+<Skills />
+<Contact />
+</main>
+
+</div> 
   );
 }

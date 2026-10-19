@@ -95,24 +95,25 @@ export default function Skills() {
         : skillCategories.filter((cat) => cat.id === selectedCategory);
 
     return (
-        <section id="skills" className="border-t border-zinc-800 bg-zinc-900/30">
-            <div className="mx-auto max-w-6xl px-6 py-20">
-                {/* Section Header */}
-                <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <section id="skills" className="border-t border-zinc-800 bg-zinc-950 py-20">
+            <div className="mx-auto max-w-6xl px-6">
+                {/* Section Header with Accent Indicator */}
+                <div className="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                     <div>
-                        <p className="font-mono text-xs uppercase tracking-wider text-orange-500">
+                        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-orange-400">
                             Capabilities &amp; Expertise
                         </p>
-                        <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+                        <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
                             Skills &amp; Competencies
                         </h2>
-                        <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">
+                        <div className="mt-3 h-1 w-12 rounded-full bg-orange-500"></div>
+                        <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
                             A breakdown of my technical stack, data analytics tools, administrative background, and professional soft skills.
                         </p>
                     </div>
 
                     {/* Total Skills Counter */}
-                    <div className="hidden lg:block text-right">
+                    <div className="hidden lg:block text-right shrink-0">
                         <span className="font-mono text-2xl font-bold text-orange-500">
                             {skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0)}+
                         </span>

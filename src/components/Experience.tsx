@@ -87,20 +87,18 @@ export default function Experience() {
     };
 
     return (
-        <section id="experience" className="border-t border-zinc-800 bg-zinc-900/30">
-            <div className="mx-auto max-w-6xl px-6 py-20">
-                <div className="mb-10">
-                    <p className="font-mono text-xs uppercase tracking-wider text-orange-500">
+        <section id="experience" className="border-t border-zinc-800 bg-zinc-950 py-20">
+            <div className="mx-auto max-w-6xl px-6">
+                <div className="mb-14">
+                    <p className="font-mono text-xs font-semibold uppercase tracking-wider text-orange-400">
                         Where I’ve contributed
                     </p>
-                    <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
                         Work Experience
                     </h2>
+                    <div className="mt-3 h-1 w-12 rounded-full bg-orange-500"></div>
                     <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
-                        My professional background spanning software development consulting, operations, and leadership.
-                    </p>
-                    <p className="mt-3 text-xs text-zinc-500">
-                        Click an experience card to see full responsibilities and achievements.
+                        My professional background spanning software development consulting, operations, and leadership. Click an experience card to see full responsibilities and achievements.
                     </p>
                 </div>
 

@@ -7,16 +7,18 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="border-t border-zinc-800 bg-zinc-900/30"
+            className="border-t border-zinc-800 bg-zinc-900/40"
         >
-            <div className="mx-auto max-w-6xl px-6 py-20">
-                <div className="rounded-2xl border border-zinc-800 bg-zinc-900 px-6 py-12 text-center sm:px-12">
-                    <p className="font-mono text-xs uppercase tracking-wider text-orange-500">
+            <div className="mx-auto max-w-6xl px-6 pt-20 pb-12">
+                {/* Contact Card */}
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-900 px-6 py-12 text-center shadow-xl shadow-black/20 sm:px-12">
+                    <p className="font-mono text-xs font-semibold uppercase tracking-wider text-orange-400">
                         Have a project or opportunity?
                     </p>
-                    <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
                         Get In Touch
                     </h2>
+                    <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-orange-500"></div>
                     <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-zinc-400">
                         I’m happy to connect about software development,
                         collaboration, or opportunities. Feel free to reach out.
@@ -73,6 +75,16 @@ export default function Contact() {
                             <span>VER-SI</span>
                         </a>
                     </div>
+                </div>
+
+                {/* Minimal Footer Area */}
+                <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-zinc-800/80 pt-8 text-center text-xs text-zinc-500 sm:flex-row">
+                    <p>
+                        © {new Date().getFullYear()} Mohd Haziq. All rights reserved.
+                    </p>
+                    <p className="font-mono">
+                        Designed &amp; Built with React &amp; Tailwind CSS
+                    </p>
                 </div>
             </div>
         </section>

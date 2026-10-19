@@ -153,20 +153,18 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="border-t border-zinc-800 bg-zinc-900/30">
-            <div className="mx-auto max-w-6xl px-6 py-20">
-                <div className="mb-10">
-                    <p className="font-mono text-xs uppercase tracking-wider text-orange-500">
-                        Selected work
+        <section id="projects" className="border-t border-zinc-800 bg-zinc-900/40 py-20">
+            <div className="mx-auto max-w-6xl px-6">
+                <div className="mb-14">
+                    <p className="font-mono text-xs font-semibold uppercase tracking-wider text-orange-400">
+                        Portfolio
                     </p>
-                    <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
                         Featured Projects
                     </h2>
+                    <div className="mt-3 h-1 w-12 rounded-full bg-orange-500"></div>
                     <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
-                        A few full-stack web applications, internal tools, and mobile concepts I’ve engineered.
-                    </p>
-                    <p className="mt-3 text-xs text-zinc-500">
-                        Click a project card to expand its details and explore features.
+                        A collection of full-stack web applications, internal tools, and mobile concepts I’ve engineered. Click a project card to expand its details and explore features.
                     </p>
                 </div>
 

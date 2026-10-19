@@ -107,20 +107,18 @@ export default function Education() {
     };
 
     return (
-        <section id="education" className="border-t border-zinc-800 bg-zinc-900/30">
-            <div className="mx-auto max-w-6xl px-6 py-20">
-                <div className="mb-10">
-                    <p className="font-mono text-xs uppercase tracking-wider text-orange-500">
+        <section id="education" className="border-t border-zinc-800 bg-zinc-900/40 py-20">
+            <div className="mx-auto max-w-6xl px-6">
+                <div className="mb-14">
+                    <p className="font-mono text-xs font-semibold uppercase tracking-wider text-orange-400">
                         Learning and growing
                     </p>
-                    <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
                         Education &amp; Qualifications
                     </h2>
+                    <div className="mt-3 h-1 w-12 rounded-full bg-orange-500"></div>
                     <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
-                        My formal academic background and qualifications spanning software development, sciences, and leadership.
-                    </p>
-                    <p className="mt-3 text-xs text-zinc-500">
-                        Click an education card to view subjects, grades, and co-curricular activities.
+                        My formal academic background and qualifications spanning software development, sciences, and leadership. Click an education card to view subjects, grades, and co-curricular activities.
                     </p>
                 </div>
 
