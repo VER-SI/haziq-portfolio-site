@@ -131,7 +131,7 @@ export default function Contact({ aesthetic }: ContactProps) {
                     {/* Minimal Footer Area */}
                     <div className={`mt-16 flex flex-col items-center justify-between gap-4 pt-8 text-center text-xs sm:flex-row ${s.footerDivider} ${aesthetic === 'neo-brutalism' ? 'text-[#341C09] font-medium' : aesthetic === 'neumorphism' ? 'text-white/90' : 'text-zinc-500'}`}>
                         <p>
-                            © {new Date().getFullYear()} Mohd Haziq. All rights reserved.
+                            © {new Date().getFullYear()} Haziq. All rights reserved.
                         </p>
                         <p className="font-mono">
                             Designed &amp; Built with React &amp; Tailwind CSS

@@ -49,6 +49,7 @@ export default function Hero({ aesthetic }: HeroProps) {
                     pill: 'rounded-none border-2 border-[#341C09] bg-[#FFEBDC] font-mono text-xs font-bold text-[#341C09] shadow-[2px_2px_0px_0px_#341C09]',
                     modalCard: 'rounded-none border-2 border-[#341C09] bg-[#FFEBDC] shadow-[8px_8px_0px_0px_#341C09]',
                     socialIcon: 'rounded-none border-2 border-[#341C09] bg-[#FFEBDC] text-[#341C09] shadow-[2px_2px_0px_0px_#341C09] hover:bg-[#341C09] hover:text-[#FFEBDC]',
+                    badge: 'border-2 border-[#341C09] bg-[#FFEBDC] text-[#341C09] shadow-[2px_2px_0px_0px_#341C09]',
                 };
             case 'neumorphism':
                 return {
@@ -62,6 +63,7 @@ export default function Hero({ aesthetic }: HeroProps) {
                     pill: 'rounded-xl bg-[#EBECF0] font-mono text-xs font-bold text-[#F98829] shadow-[inset_3px_3px_6px_#c8c9ce,inset_-3px_-3px_6px_#ffffff]',
                     modalCard: 'rounded-3xl bg-[#EBECF0] text-[#485160] shadow-[16px_16px_32px_#c8c9ce,-16px_-16px_32px_#ffffff]',
                     socialIcon: 'rounded-2xl bg-[#EBECF0] text-[#485160] shadow-[5px_5px_10px_#c8c9ce,-5px_-5px_10px_#ffffff] hover:text-[#F98829] active:shadow-[inset_3px_3px_6px_#c8c9ce,inset_-3px_-3px_6px_#ffffff]',
+                    badge: 'rounded-xl bg-[#EBECF0] text-[#F98829] shadow-[inset_2px_2px_4px_#c8c9ce,inset_-2px_-2px_4px_#ffffff]',
                 };
             case 'default':
             default:
@@ -76,6 +78,7 @@ export default function Hero({ aesthetic }: HeroProps) {
                     pill: 'rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-orange-500/40 hover:text-orange-400',
                     modalCard: 'rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl',
                     socialIcon: 'rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 hover:border-orange-500/50 hover:text-orange-500',
+                    badge: 'rounded-full border border-orange-500/40 bg-orange-500/10 text-orange-400',
                 };
         }
     };
@@ -90,6 +93,13 @@ export default function Hero({ aesthetic }: HeroProps) {
             >
                 {/* Text & Action Column */}
                 <div className="flex flex-col">
+                    {/* Designed & Developed Badge */}
+                    <div className="mb-4 inline-flex">
+                        <span className={`inline-flex items-center gap-1.5 px-3 py-1 font-mono text-xs font-semibold ${s.badge}`}>
+                            Designed &amp; Developed by Haziq
+                        </span>
+                    </div>
+
                     <div className="md:hidden">
                         <h1 className={`text-4xl font-bold leading-tight tracking-tight ${s.titleText}`}>
                             Hi, I’m <span className={s.accentText}>Haziq.</span>
@@ -229,7 +239,7 @@ export default function Hero({ aesthetic }: HeroProps) {
             {isCvModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md">
                     <div className={`relative flex max-h-[90vh] w-full max-w-3xl flex-col p-6 overflow-hidden ${s.modalCard}`}>
-                        <div className="flex items-center justify-between border-b border-[#485160]/20 pb-4">
+                        <div className="flex items-center justify-between border-b border-[#485160]/25 pb-4">
                             <div>
                                 <h3 className={`text-lg font-bold ${aesthetic === 'neumorphism' ? 'text-[#2D343F]' : 'text-zinc-100'}`}>Curriculum Vitae Preview</h3>
                                 <p className={`text-xs ${aesthetic === 'neumorphism' ? 'text-[#F98829]' : 'text-zinc-400'}`}>Haziq — Software Developer &amp; Data Analyst</p>
@@ -243,6 +253,7 @@ export default function Hero({ aesthetic }: HeroProps) {
                                     Download (JPG)
                                 </a>
                                 <button
+                                    type="button"
                                     onClick={() => setIsCvModalOpen(false)}
                                     className={`rounded-lg p-1.5 transition ${aesthetic === 'neumorphism' ? 'text-[#485160] hover:bg-[#c8c9ce]/50 hover:text-[#F98829]' : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100'}`}
                                 >
