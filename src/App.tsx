@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Skills from "./components/Skills";
@@ -13,43 +13,6 @@ export type DesignAesthetic = 'default' | 'neo-brutalism' | 'neumorphism';
 export default function App() {
   // State to track which design is currently active
   const [aesthetic, setAesthetic] = useState<DesignAesthetic>('default');
-  const [activeSection, setActiveSection] = useState('home');
-
-  const navLinks = [
-    { href: '#projects' },
-    { href: '#experience' },
-    { href: '#education' },
-    { href: '#skills' },
-    { href: '#contact' },
-  ];
-
-  // Track active section on scroll
-  useEffect(() => {
-    const sections = navLinks
-      .map((link) => document.getElementById(link.href.replace('#', '')))
-      .filter(Boolean);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    sections.forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
-    return () => {
-      sections.forEach((section) => {
-        if (section) observer.unobserve(section);
-      });
-    };
-  }, [navLinks]);
 
   const getAppStyles = () => {
     switch (aesthetic) {
