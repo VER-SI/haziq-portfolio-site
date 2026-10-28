@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
+import { type DesignAesthetic } from './Hero';
 
-export default function Navbar() {
+type NavbarProps = {
+    aesthetic: DesignAesthetic;
+};
+
+export default function Navbar({ aesthetic }: NavbarProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
 
@@ -52,16 +57,60 @@ export default function Navbar() {
         }
     };
 
+    const getStyles = () => {
+        switch (aesthetic) {
+            case 'neo-brutalism':
+                return {
+                    headerBg: 'bg-[#341C09] text-[#FFEBDC] border-b-2 border-[#341C09]',
+                    logo: 'text-[#FFEBDC] hover:text-[#FC7307]',
+                    logoAccent: 'text-[#FC7307]',
+                    navActive: 'text-[#FC7307] font-extrabold underline decoration-2 decoration-[#FEAB6D]',
+                    navInactive: 'text-[#FFEBDC] font-bold hover:text-[#FC7307]',
+                    resumeBtn: 'rounded-none border-2 border-[#FFEBDC] bg-[#FC7307] px-3.5 py-1.5 text-xs font-extrabold text-[#341C09] shadow-[2px_2px_0px_0px_#FFEBDC] hover:bg-[#FEAB6D] transition-all',
+                    mobileBtn: 'rounded-none border-2 border-[#FFEBDC] bg-[#FC7307] text-[#341C09] shadow-[2px_2px_0px_0px_#FFEBDC] hover:bg-[#FEAB6D]',
+                    mobileDrawer: 'border-b-2 border-[#341C09] bg-[#341C09]',
+                    mobileResumeBtn: 'rounded-none border-2 border-[#FFEBDC] bg-[#FC7307] px-4 py-2.5 text-xs font-extrabold text-[#341C09] shadow-[2px_2px_0px_0px_#FFEBDC] hover:bg-[#FEAB6D]',
+                };
+            case 'neumorphism':
+                return {
+                    headerBg: 'bg-zinc-950/80 text-zinc-100 border-b border-zinc-800/80',
+                    logo: 'text-zinc-100 hover:text-orange-500',
+                    logoAccent: 'text-orange-500',
+                    navActive: 'text-orange-400 font-semibold after:w-full',
+                    navInactive: 'text-zinc-400 hover:text-orange-400',
+                    resumeBtn: 'rounded-xl border border-orange-500/40 bg-orange-500/10 px-3.5 py-1.5 text-xs font-semibold text-orange-400 hover:bg-orange-500 hover:text-white shadow-[2px_2px_5px_#09090b]',
+                    mobileBtn: 'rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-orange-400',
+                    mobileDrawer: 'border-b border-zinc-800 bg-zinc-950',
+                    mobileResumeBtn: 'mt-2 text-center rounded-xl border border-orange-500/50 bg-orange-500/10 px-4 py-2.5 text-xs font-semibold text-orange-400',
+                };
+            case 'default':
+            default:
+                return {
+                    headerBg: 'bg-zinc-950/80 text-zinc-100 border-b border-zinc-800/80',
+                    logo: 'text-zinc-100 hover:text-orange-500',
+                    logoAccent: 'text-orange-500',
+                    navActive: 'text-orange-400 font-semibold after:w-full',
+                    navInactive: 'text-zinc-400 hover:text-orange-400',
+                    resumeBtn: 'rounded-lg border border-orange-500/40 bg-orange-500/10 px-3.5 py-1.5 text-xs font-semibold text-orange-400 hover:bg-orange-500 hover:text-white',
+                    mobileBtn: 'rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-orange-400',
+                    mobileDrawer: 'border-b border-zinc-800 bg-zinc-950',
+                    mobileResumeBtn: 'mt-2 text-center rounded-lg border border-orange-500/50 bg-orange-500/10 px-4 py-2.5 text-xs font-semibold text-orange-400',
+                };
+        }
+    };
+
+    const s = getStyles();
+
     return (
-        <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
+        <header className={`sticky top-0 z-50 backdrop-blur-md transition-colors duration-500 ${s.headerBg}`}>
             <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
                 {/* Logo / Brand Name */}
                 <a
                     href="#home"
                     onClick={(e) => handleScroll(e, '#home')}
-                    className="font-mono text-base font-bold text-zinc-100 transition hover:text-orange-500"
+                    className={`font-mono text-base font-bold transition ${s.logo}`}
                 >
-                    Haziq<span className="text-orange-500">.dev</span>
+                    Haziq<span className={s.logoAccent}>.dev</span>
                 </a>
 
                 {/* Desktop Links */}
@@ -75,10 +124,12 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 onClick={(e) => handleScroll(e, link.href)}
-                                className={`relative py-1 text-xs font-medium transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full ${
-                                    isActive
-                                        ? 'text-orange-400 font-semibold after:w-full'
-                                        : 'text-zinc-400 hover:text-orange-400'
+                                className={`relative py-1 text-xs font-medium transition-colors duration-200 ${
+                                    aesthetic !== 'neo-brutalism'
+                                        ? 'after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full'
+                                        : ''
+                                } ${
+                                    isActive ? s.navActive : s.navInactive
                                 }`}
                             >
                                 {link.name}
@@ -90,7 +141,7 @@ export default function Navbar() {
                         target="_blank"
                         download="Haziq_CV.jpg"
                         rel="noopener noreferrer"
-                        className="rounded-lg border border-orange-500/40 bg-orange-500/10 px-3.5 py-1.5 text-xs font-semibold text-orange-400 transition hover:bg-orange-500 hover:text-white"
+                        className={s.resumeBtn}
                     >
                         Resume / CV
                     </a>
@@ -100,7 +151,7 @@ export default function Navbar() {
                 <button
                     type="button"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 transition hover:text-orange-400 md:hidden"
+                    className={`flex h-9 w-9 items-center justify-center transition md:hidden ${s.mobileBtn}`}
                     aria-label="Toggle Navigation"
                 >
                     {mobileMenuOpen ? (
@@ -117,7 +168,7 @@ export default function Navbar() {
 
             {/* Mobile Navigation Drawer */}
             {mobileMenuOpen && (
-                <div className="border-b border-zinc-800 bg-zinc-950 px-6 py-6 md:hidden">
+                <div className={`px-6 py-6 md:hidden ${s.mobileDrawer}`}>
                     <nav className="flex flex-col gap-4">
                         {navLinks.map((link) => {
                             const targetId = link.href.replace('#', '');
@@ -128,8 +179,8 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleScroll(e, link.href)}
-                                    className={`text-sm font-medium transition hover:text-orange-400 ${
-                                        isActive ? 'text-orange-400 font-semibold' : 'text-zinc-300'
+                                    className={`text-sm font-medium transition ${
+                                        isActive ? s.navActive : s.navInactive
                                     }`}
                                 >
                                     {link.name}
@@ -141,7 +192,7 @@ export default function Navbar() {
                             target="_blank"
                             download="Haziq_CV.jpg"
                             rel="noopener noreferrer"
-                            className="mt-2 text-center rounded-lg border border-orange-500/50 bg-orange-500/10 px-4 py-2.5 text-xs font-semibold text-orange-400"
+                            className={s.mobileResumeBtn}
                         >
                             View Resume / CV
                         </a>
