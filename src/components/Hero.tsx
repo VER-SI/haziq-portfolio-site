@@ -52,16 +52,16 @@ export default function Hero({ aesthetic }: HeroProps) {
                 };
             case 'neumorphism':
                 return {
-                    sectionBg: 'bg-zinc-950 text-zinc-100',
-                    titleText: 'text-zinc-100',
-                    accentText: 'text-orange-500',
-                    subText: 'text-zinc-400',
-                    card: 'rounded-3xl bg-zinc-900 shadow-[10px_10px_20px_#09090b,-10px_-10px_20px_#1b1b1f] border border-zinc-800/40',
-                    buttonPrimary: 'rounded-xl bg-orange-600 text-white shadow-[4px_4px_8px_#09090b,-4px_-4px_8px_#1b1b1f] hover:shadow-[inset_2px_2px_4px_#09090b,inset_-2px_-2px_4px_#1b1b1f]',
-                    buttonSecondary: 'rounded-xl bg-zinc-900 text-zinc-200 shadow-[4px_4px_8px_#09090b,-4px_-4px_8px_#1b1b1f]',
-                    pill: 'rounded-xl bg-zinc-900 shadow-[inset_2px_2px_4px_#09090b,inset_-2px_-2px_4px_#1b1b1f] border border-zinc-800/50 text-zinc-300',
-                    modalCard: 'rounded-3xl bg-zinc-900 shadow-[12px_12px_24px_#09090b,-12px_-12px_24px_#1b1b1f] border border-zinc-800/50',
-                    socialIcon: 'rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 hover:border-orange-500/50 hover:text-orange-500',
+                    sectionBg: 'bg-[#EBECF0] text-[#485160]',
+                    titleText: 'text-[#2D343F]',
+                    accentText: 'text-[#F98829]',
+                    subText: 'text-[#F98829]',
+                    card: 'rounded-3xl bg-[#EBECF0] p-3 shadow-[10px_10px_20px_#c8c9ce,-10px_-10px_20px_#ffffff]',
+                    buttonPrimary: 'rounded-2xl bg-[#F98829] text-white font-bold shadow-[6px_6px_12px_#c8c9ce,-6px_-6px_12px_#ffffff] hover:bg-[#e0771f] active:shadow-[inset_4px_4px_8px_#bd5f13] transition-all',
+                    buttonSecondary: 'rounded-2xl bg-[#EBECF0] text-[#485160] font-semibold shadow-[6px_6px_12px_#c8c9ce,-6px_-6px_12px_#ffffff] hover:text-[#F98829] active:shadow-[inset_4px_4px_8px_#c8c9ce,inset_-4px_-4px_8px_#ffffff] transition-all',
+                    pill: 'rounded-xl bg-[#EBECF0] font-mono text-xs font-bold text-[#F98829] shadow-[inset_3px_3px_6px_#c8c9ce,inset_-3px_-3px_6px_#ffffff]',
+                    modalCard: 'rounded-3xl bg-[#EBECF0] text-[#485160] shadow-[16px_16px_32px_#c8c9ce,-16px_-16px_32px_#ffffff]',
+                    socialIcon: 'rounded-2xl bg-[#EBECF0] text-[#485160] shadow-[5px_5px_10px_#c8c9ce,-5px_-5px_10px_#ffffff] hover:text-[#F98829] active:shadow-[inset_3px_3px_6px_#c8c9ce,inset_-3px_-3px_6px_#ffffff]',
                 };
             case 'default':
             default:
@@ -112,7 +112,13 @@ export default function Hero({ aesthetic }: HeroProps) {
                         <ProfileCard imageFailed={imageFailed} setImageFailed={setImageFailed} styleClasses={s.card} aesthetic={aesthetic} />
                     </div>
 
-                    <p className={`mt-2 max-w-xl text-base leading-7 sm:text-lg sm:leading-8 md:mt-6 ${aesthetic === 'neo-brutalism' ? 'text-[#341C09] font-medium' : 'text-zinc-400'}`}>
+                    <p className={`mt-2 max-w-xl text-base leading-7 sm:text-lg sm:leading-8 md:mt-6 ${
+                        aesthetic === 'neo-brutalism' 
+                            ? 'text-[#341C09] font-medium' 
+                            : aesthetic === 'neumorphism' 
+                            ? 'text-[#616B7C] font-medium' 
+                            : 'text-zinc-400'
+                    }`}>
                         I build practical web experiences and data-driven systems with Laravel, React, SQL, and TypeScript. With a background in UI/UX design and administration, I enjoy making applications that are clear, efficient, and impactful.
                     </p>
 
@@ -131,6 +137,8 @@ export default function Hero({ aesthetic }: HeroProps) {
                             className={`group flex items-center gap-1 px-3 py-1.5 font-mono text-xs font-semibold transition ${
                                 aesthetic === 'neo-brutalism'
                                     ? 'rounded-none border-2 border-[#341C09] bg-[#FFEBDC] text-[#341C09] shadow-[2px_2px_0px_0px_#341C09]'
+                                    : aesthetic === 'neumorphism'
+                                    ? 'rounded-xl bg-[#EBECF0] text-[#F98829] shadow-[4px_4px_8px_#c8c9ce,-4px_-4px_8px_#ffffff] hover:text-[#2D343F]'
                                     : 'rounded-md border border-orange-500/40 bg-orange-500/10 text-orange-400 hover:bg-orange-500 hover:text-white'
                             }`}
                         >
@@ -162,7 +170,7 @@ export default function Hero({ aesthetic }: HeroProps) {
                         </button>
                     </div>
 
-                    {/* Social Icons with Updated Hover Styles */}
+                    {/* Social Icons */}
                     <div className="mt-8 flex items-center gap-3">
                         <a
                             href="mailto:ziqhazri@gmail.com"
@@ -199,7 +207,7 @@ export default function Hero({ aesthetic }: HeroProps) {
                         </a>
 
                         <a
-                            href="https://wa.me/6731234567"
+                            href="https://wa.me/6738995016"
                             target="_blank"
                             rel="noopener noreferrer"
                             title="Chat on WhatsApp"
@@ -221,10 +229,10 @@ export default function Hero({ aesthetic }: HeroProps) {
             {isCvModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md">
                     <div className={`relative flex max-h-[90vh] w-full max-w-3xl flex-col p-6 overflow-hidden ${s.modalCard}`}>
-                        <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+                        <div className="flex items-center justify-between border-b border-[#485160]/20 pb-4">
                             <div>
-                                <h3 className="text-lg font-bold text-zinc-100">Curriculum Vitae Preview</h3>
-                                <p className="text-xs text-zinc-400">Haziq — Software Developer &amp; Data Analyst</p>
+                                <h3 className={`text-lg font-bold ${aesthetic === 'neumorphism' ? 'text-[#2D343F]' : 'text-zinc-100'}`}>Curriculum Vitae Preview</h3>
+                                <p className={`text-xs ${aesthetic === 'neumorphism' ? 'text-[#F98829]' : 'text-zinc-400'}`}>Haziq — Software Developer &amp; Data Analyst</p>
                             </div>
                             <div className="flex items-center gap-3">
                                 <a
@@ -236,13 +244,13 @@ export default function Hero({ aesthetic }: HeroProps) {
                                 </a>
                                 <button
                                     onClick={() => setIsCvModalOpen(false)}
-                                    className="rounded-lg p-1.5 text-zinc-400 transition hover:bg-zinc-800 hover:text-zinc-100"
+                                    className={`rounded-lg p-1.5 transition ${aesthetic === 'neumorphism' ? 'text-[#485160] hover:bg-[#c8c9ce]/50 hover:text-[#F98829]' : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100'}`}
                                 >
                                     ✕
                                 </button>
                             </div>
                         </div>
-                        <div className="mt-4 flex-1 overflow-y-auto rounded-lg border border-zinc-800 bg-zinc-950 p-2">
+                        <div className="mt-4 flex-1 overflow-y-auto rounded-lg border border-[#485160]/20 bg-[#EBECF0] p-2">
                             <img src="/images/cv.jpg" alt="CV" className="w-full rounded object-contain" />
                         </div>
                     </div>
@@ -255,7 +263,7 @@ export default function Hero({ aesthetic }: HeroProps) {
 function ProfileCard({ imageFailed, setImageFailed, styleClasses, aesthetic }: { imageFailed: boolean; setImageFailed: (val: boolean) => void; styleClasses: string; aesthetic: DesignAesthetic }) {
     return (
         <div className={`group relative overflow-hidden p-3 transition duration-300 hover:-translate-y-1 ${styleClasses}`}>
-            <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-800">
+            <div className={`aspect-[4/5] overflow-hidden rounded-2xl ${aesthetic === 'neumorphism' ? 'bg-[#EBECF0] shadow-[inset_6px_6px_12px_#c8c9ce,inset_-6px_-6px_12px_#ffffff]' : 'bg-zinc-800'}`}>
                 {!imageFailed ? (
                     <img
                         src="/images/profile.jpeg"
@@ -276,10 +284,12 @@ function ProfileCard({ imageFailed, setImageFailed, styleClasses, aesthetic }: {
             <div className={`absolute bottom-6 left-6 px-4 py-3 backdrop-blur ${
                 aesthetic === 'neo-brutalism'
                     ? 'rounded-none border-2 border-[#341C09] bg-[#FFEBDC] shadow-[3px_3px_0px_0px_#341C09]'
+                    : aesthetic === 'neumorphism'
+                    ? 'rounded-2xl bg-[#EBECF0] shadow-[6px_6px_12px_#c8c9ce,-6px_-6px_12px_#ffffff]'
                     : 'rounded-lg border border-zinc-700 bg-zinc-950/90'
             }`}>
-                <p className={`text-sm font-semibold ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : 'text-zinc-100'}`}>Haziq</p>
-                <p className={`mt-1 font-mono text-xs ${aesthetic === 'neo-brutalism' ? 'text-[#9D4502] font-bold' : 'text-orange-400'}`}>
+                <p className={`text-sm font-semibold ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : aesthetic === 'neumorphism' ? 'text-[#2D343F]' : 'text-zinc-100'}`}>Haziq</p>
+                <p className={`mt-1 font-mono text-xs ${aesthetic === 'neo-brutalism' ? 'text-[#9D4502] font-bold' : aesthetic === 'neumorphism' ? 'text-[#F98829] font-bold' : 'text-orange-400'}`}>
                     Software Developer &amp; Data Analyst
                 </p>
             </div>

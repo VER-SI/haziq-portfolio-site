@@ -26,15 +26,15 @@ export default function Contact({ aesthetic }: ContactProps) {
                 };
             case 'neumorphism':
                 return {
-                    sectionBg: 'bg-zinc-950 text-zinc-100',
-                    categoryText: 'text-orange-500',
-                    titleText: 'text-zinc-100',
-                    summaryText: 'text-zinc-400',
-                    cardContainer: 'rounded-2xl bg-zinc-900 shadow-[10px_10px_20px_#09090b,-10px_-10px_20px_#1b1b1f] border border-zinc-800/40 px-6 py-12 text-center sm:px-12',
-                    buttonPrimary: 'inline-flex items-center gap-2 rounded-xl bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-[4px_4px_8px_#09090b,-4px_-4px_8px_#1b1b1f] transition hover:bg-orange-500',
-                    buttonSecondary: 'inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-zinc-200 shadow-[4px_4px_8px_#09090b,-4px_-4px_8px_#1b1b1f] transition hover:text-orange-500',
-                    divider: 'border-t border-zinc-800',
-                    footerDivider: 'border-t border-zinc-800/80',
+                    sectionBg: 'bg-[#F98829] text-white',
+                    categoryText: 'text-white font-bold',
+                    titleText: 'text-white',
+                    summaryText: 'text-white/95',
+                    cardContainer: 'rounded-3xl bg-[#EBECF0] text-[#2D343F] shadow-[10px_10px_20px_#d47322,-10px_-10px_20px_#ff9d30] px-6 py-12 text-center sm:px-12',
+                    buttonPrimary: 'inline-flex items-center gap-2 rounded-xl bg-[#EBECF0] px-5 py-3 text-sm font-semibold text-[#F98829] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff] transition hover:text-[#2D343F]',
+                    buttonSecondary: 'inline-flex items-center gap-2 rounded-xl bg-[#EBECF0] px-5 py-3 text-sm font-semibold text-[#2D343F] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff] transition hover:text-[#F98829]',
+                    divider: 'border-t-2 border-white/20',
+                    footerDivider: 'border-t-2 border-white/20',
                 };
             case 'default':
             default:
@@ -63,14 +63,14 @@ export default function Contact({ aesthetic }: ContactProps) {
                 <div className="mx-auto max-w-6xl px-6 pt-0 pb-12">
                     {/* Contact Card */}
                     <div className={s.cardContainer}>
-                        <p className={`font-mono text-xs font-semibold uppercase tracking-wider ${s.categoryText}`}>
+                        <p className={`font-mono text-xs font-semibold uppercase tracking-wider ${aesthetic === 'neumorphism' ? 'text-[#F98829] font-bold' : s.categoryText}`}>
                             Have a project or opportunity?
                         </p>
-                        <h2 className={`mt-2 text-3xl font-bold tracking-tight sm:text-4xl ${s.titleText}`}>
+                        <h2 className={`mt-2 text-3xl font-bold tracking-tight sm:text-4xl ${aesthetic === 'neumorphism' ? 'text-[#2D343F]' : s.titleText}`}>
                             Get In Touch
                         </h2>
-                        <div className={`mx-auto mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : 'bg-orange-500'}`}></div>
-                        <p className={`mx-auto mt-4 max-w-xl text-sm leading-7 ${s.summaryText}`}>
+                        <div className={`mx-auto mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : aesthetic === 'neumorphism' ? 'bg-[#F98829]' : 'bg-white'}`}></div>
+                        <p className={`mx-auto mt-4 max-w-xl text-sm leading-7 ${aesthetic === 'neumorphism' ? 'text-[#5A6578]' : s.summaryText}`}>
                             I’m happy to connect about software development,
                             collaboration, or opportunities. Feel free to reach out.
                         </p>
@@ -129,7 +129,7 @@ export default function Contact({ aesthetic }: ContactProps) {
                     </div>
 
                     {/* Minimal Footer Area */}
-                    <div className={`mt-16 flex flex-col items-center justify-between gap-4 pt-8 text-center text-xs sm:flex-row ${s.footerDivider} ${aesthetic === 'neo-brutalism' ? 'text-[#341C09] font-medium' : 'text-zinc-500'}`}>
+                    <div className={`mt-16 flex flex-col items-center justify-between gap-4 pt-8 text-center text-xs sm:flex-row ${s.footerDivider} ${aesthetic === 'neo-brutalism' ? 'text-[#341C09] font-medium' : aesthetic === 'neumorphism' ? 'text-white/90' : 'text-zinc-500'}`}>
                         <p>
                             © {new Date().getFullYear()} Mohd Haziq. All rights reserved.
                         </p>

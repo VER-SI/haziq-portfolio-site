@@ -31,17 +31,17 @@ export default function Education({ aesthetic }: EducationProps) {
                 };
             case 'neumorphism':
                 return {
-                    sectionBg: 'bg-zinc-950 text-zinc-100',
-                    categoryText: 'text-orange-500',
-                    titleText: 'text-zinc-100',
-                    summaryText: 'text-zinc-400',
-                    cardContainer: 'rounded-2xl bg-zinc-900 shadow-[10px_10px_20px_#09090b,-10px_-10px_20px_#1b1b1f] border border-zinc-800/40',
-                    cardExpanded: 'border-orange-500 bg-orange-500/5 ring-1 ring-orange-500/20',
-                    cardHeaderButton: 'hover:bg-zinc-800/40',
-                    arrowIcon: 'rounded-full border border-zinc-700 text-zinc-400',
-                    badge: 'rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 font-mono text-xs',
-                    subjectBadge: 'rounded-md border border-orange-500/20 bg-orange-500/10 text-orange-300 text-xs',
-                    divider: 'border-t border-zinc-800',
+                    sectionBg: 'bg-[#F98829] text-white',
+                    categoryText: 'text-white font-bold',
+                    titleText: 'text-white',
+                    summaryText: 'text-white/95',
+                    cardContainer: 'rounded-3xl bg-[#EBECF0] text-[#2D343F] shadow-[10px_10px_20px_#d47322,-10px_-10px_20px_#ff9d30]',
+                    cardExpanded: 'rounded-3xl bg-[#EBECF0] text-[#2D343F] shadow-[inset_6px_6px_12px_#c8c9ce,inset_-6px_-6px_12px_#ffffff]',
+                    cardHeaderButton: 'hover:bg-[#e1e2e6] rounded-2xl transition-colors',
+                    arrowIcon: 'rounded-full bg-[#EBECF0] text-[#2D343F] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff]',
+                    badge: 'rounded-xl bg-[#EBECF0] text-[#F98829] font-mono text-xs font-bold shadow-[inset_3px_3px_6px_#c8c9ce,inset_-3px_-3px_6px_#ffffff]',
+                    subjectBadge: 'rounded-xl bg-[#EBECF0] text-[#2D343F] font-semibold text-xs shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff]',
+                    divider: 'border-t-2 border-white/20',
                 };
             case 'default':
             default:
@@ -74,7 +74,7 @@ export default function Education({ aesthetic }: EducationProps) {
                         <h2 className={`mt-2 text-3xl font-bold tracking-tight sm:text-4xl ${s.titleText}`}>
                             Education &amp; Qualifications
                         </h2>
-                        <div className={`mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : 'bg-orange-500'}`}></div>
+                        <div className={`mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : 'bg-white'}`}></div>
                         <p className={`mt-4 max-w-2xl text-sm leading-7 ${s.summaryText}`}>
                             My formal academic background and qualifications spanning software development, sciences, and leadership. Click an education card to view subjects, grades, and co-curricular activities.
                         </p>
@@ -104,21 +104,21 @@ export default function Education({ aesthetic }: EducationProps) {
                                         >
                                             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                                                 <div>
-                                                    <p className={`font-mono text-xs font-medium uppercase tracking-wider ${s.categoryText}`}>
+                                                    <p className={`font-mono text-xs font-medium uppercase tracking-wider ${aesthetic === 'neumorphism' ? 'text-[#F98829] font-bold' : s.categoryText}`}>
                                                         {edu.levelTag}
                                                     </p>
-                                                    <h3 className={`mt-2 text-xl font-bold ${s.titleText}`}>
+                                                    <h3 className={`mt-2 text-xl font-bold ${aesthetic === 'neumorphism' ? 'text-[#2D343F]' : s.titleText}`}>
                                                         {edu.degree}
                                                     </h3>
-                                                    <p className={`mt-1 text-sm font-medium ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : 'text-zinc-300'}`}>
+                                                    <p className={`mt-1 text-sm font-semibold ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : aesthetic === 'neumorphism' ? 'text-[#5A6578]' : 'text-zinc-300'}`}>
                                                         {edu.institution}
                                                     </p>
                                                     {edu.grade && (
-                                                        <p className={`mt-1 font-mono text-xs ${aesthetic === 'neo-brutalism' ? 'text-[#9D4502] font-bold' : 'text-orange-400'}`}>
+                                                        <p className={`mt-1 font-mono text-xs ${aesthetic === 'neo-brutalism' ? 'text-[#9D4502] font-bold' : aesthetic === 'neumorphism' ? 'text-[#F98829] font-bold' : 'text-orange-400'}`}>
                                                             Grade: {edu.grade}
                                                         </p>
                                                     )}
-                                                    <p className={`mt-3 max-w-2xl text-sm leading-6 ${s.summaryText}`}>
+                                                    <p className={`mt-3 max-w-2xl text-sm leading-6 ${aesthetic === 'neumorphism' ? 'text-[#2D343F]' : s.summaryText}`}>
                                                         {edu.summary}
                                                     </p>
                                                 </div>
@@ -131,7 +131,7 @@ export default function Education({ aesthetic }: EducationProps) {
                                                         aria-hidden="true"
                                                         className={`flex h-8 w-8 shrink-0 items-center justify-center transition-all duration-300 ${
                                                             isExpanded
-                                                                ? `${aesthetic === 'neo-brutalism' ? 'rotate-180 border-2 border-[#341C09] bg-[#FC7307] text-[#341C09] font-bold shadow-[2px_2px_0px_0px_#341C09]' : 'rotate-180 border-orange-500 bg-orange-500 text-white'}`
+                                                                ? `${aesthetic === 'neo-brutalism' ? 'rotate-180 border-2 border-[#341C09] bg-[#FC7307] text-[#341C09] font-bold shadow-[2px_2px_0px_0px_#341C09]' : aesthetic === 'neumorphism' ? 'rotate-180 bg-[#F98829] text-white shadow-[inset_2px_2px_4px_#c8c9ce,inset_-2px_-2px_4px_#ffffff]' : 'rotate-180 border-orange-500 bg-orange-500 text-white'}`
                                                                 : s.arrowIcon
                                                         }`}
                                                     >
@@ -143,8 +143,8 @@ export default function Education({ aesthetic }: EducationProps) {
                                             <span
                                                 className={`mt-4 inline-block text-xs font-medium ${
                                                     isExpanded 
-                                                        ? aesthetic === 'neo-brutalism' ? 'text-[#341C09] font-bold' : 'text-orange-400' 
-                                                        : aesthetic === 'neo-brutalism' ? 'text-[#9D4502]' : 'text-zinc-500'
+                                                        ? aesthetic === 'neo-brutalism' ? 'text-[#341C09] font-bold' : aesthetic === 'neumorphism' ? 'text-[#F98829] font-bold' : 'text-orange-400' 
+                                                        : aesthetic === 'neo-brutalism' ? 'text-[#9D4502]' : aesthetic === 'neumorphism' ? 'text-[#5A6578]' : 'text-zinc-500'
                                                 }`}
                                             >
                                                 {isExpanded ? 'Hide details' : 'Click to expand subjects & activities'}
@@ -168,7 +168,7 @@ export default function Education({ aesthetic }: EducationProps) {
                                                 >
                                                     {/* Key Subjects & Focus Areas */}
                                                     <div>
-                                                        <h4 className={`font-mono text-xs uppercase tracking-wider ${s.categoryText}`}>
+                                                        <h4 className={`font-mono text-xs uppercase tracking-wider ${aesthetic === 'neumorphism' ? 'text-[#F98829] font-bold' : s.categoryText}`}>
                                                             Subjects &amp; Focus Areas
                                                         </h4>
                                                         <ul className="mt-3 flex flex-wrap gap-2">
@@ -185,10 +185,10 @@ export default function Education({ aesthetic }: EducationProps) {
 
                                                     {/* Co-Curricular & Extra Activities */}
                                                     <div>
-                                                        <h4 className={`font-mono text-xs uppercase tracking-wider ${s.categoryText}`}>
+                                                        <h4 className={`font-mono text-xs uppercase tracking-wider ${aesthetic === 'neumorphism' ? 'text-[#F98829] font-bold' : s.categoryText}`}>
                                                             Co-Curricular &amp; Activities
                                                         </h4>
-                                                        <ul className={`mt-3 list-disc list-inside space-y-2 text-sm leading-6 ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : 'text-zinc-300'}`}>
+                                                        <ul className={`mt-3 list-disc list-inside space-y-2 text-sm leading-6 ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : aesthetic === 'neumorphism' ? 'text-[#2D343F]' : 'text-zinc-300'}`}>
                                                             {edu.activities.map((activity, idx) => (
                                                                 <li key={idx}>{activity}</li>
                                                             ))}

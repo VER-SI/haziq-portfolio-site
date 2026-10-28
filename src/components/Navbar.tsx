@@ -57,7 +57,7 @@ export default function Navbar({ aesthetic }: NavbarProps) {
         }
     };
 
-    const getStyles = () => {
+    const getStyles = (sectionId: string) => {
         switch (aesthetic) {
             case 'neo-brutalism':
                 return {
@@ -72,17 +72,34 @@ export default function Navbar({ aesthetic }: NavbarProps) {
                     mobileResumeBtn: 'rounded-none border-2 border-[#FFEBDC] bg-[#FC7307] px-4 py-2.5 text-xs font-extrabold text-[#341C09] shadow-[2px_2px_0px_0px_#FFEBDC] hover:bg-[#FEAB6D]',
                 };
             case 'neumorphism':
-                return {
-                    headerBg: 'bg-zinc-950/80 text-zinc-100 border-b border-zinc-800/80',
-                    logo: 'text-zinc-100 hover:text-orange-500',
-                    logoAccent: 'text-orange-500',
-                    navActive: 'text-orange-400 font-semibold after:w-full',
-                    navInactive: 'text-zinc-400 hover:text-orange-400',
-                    resumeBtn: 'rounded-xl border border-orange-500/40 bg-orange-500/10 px-3.5 py-1.5 text-xs font-semibold text-orange-400 hover:bg-orange-500 hover:text-white shadow-[2px_2px_5px_#09090b]',
-                    mobileBtn: 'rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-orange-400',
-                    mobileDrawer: 'border-b border-zinc-800 bg-zinc-950',
-                    mobileResumeBtn: 'mt-2 text-center rounded-xl border border-orange-500/50 bg-orange-500/10 px-4 py-2.5 text-xs font-semibold text-orange-400',
-                };
+                // Check which section is active to match Neumorphism's alternating backgrounds
+                if (sectionId === 'education' || sectionId === 'skills' || sectionId === 'contact') {
+                    // Orange background sections
+                    return {
+                        headerBg: 'bg-[#F98829] text-white border-b-2 border-white/25 shadow-md',
+                        logo: 'text-white hover:text-white/90',
+                        logoAccent: 'text-white font-black',
+                        navActive: 'text-white font-bold underline decoration-2 decoration-white',
+                        navInactive: 'text-white/80 font-semibold hover:text-white',
+                        resumeBtn: 'rounded-xl bg-[#EBECF0] px-3.5 py-1.5 text-xs font-semibold text-[#F98829] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff] transition hover:text-[#2D343F]',
+                        mobileBtn: 'rounded-xl bg-[#EBECF0] text-[#F98829] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff]',
+                        mobileDrawer: 'border-b-2 border-white/20 bg-[#F98829]',
+                        mobileResumeBtn: 'mt-2 text-center rounded-xl bg-[#EBECF0] px-4 py-2.5 text-xs font-semibold text-[#F98829] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff]',
+                    };
+                } else {
+                    // Gray/Dark background sections (Hero, Projects, Experience)
+                    return {
+                        headerBg: 'bg-[#EBECF0] text-[#2D343F] border-b-2 border-[#2D343F]/15 shadow-md',
+                        logo: 'text-[#2D343F] hover:text-[#F98829]',
+                        logoAccent: 'text-[#F98829]',
+                        navActive: 'text-[#F98829] font-bold underline decoration-2 decoration-[#F98829]',
+                        navInactive: 'text-[#5A6578] font-semibold hover:text-[#2D343F]',
+                        resumeBtn: 'rounded-xl bg-[#EBECF0] px-3.5 py-1.5 text-xs font-semibold text-[#F98829] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff] transition hover:text-[#2D343F]',
+                        mobileBtn: 'rounded-xl bg-[#EBECF0] text-[#2D343F] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff]',
+                        mobileDrawer: 'border-b-2 border-[#2D343F]/15 bg-[#EBECF0]',
+                        mobileResumeBtn: 'mt-2 text-center rounded-xl bg-[#EBECF0] px-4 py-2.5 text-xs font-semibold text-[#F98829] shadow-[3px_3px_6px_#c8c9ce,-3px_-3px_6px_#ffffff]',
+                    };
+                }
             case 'default':
             default:
                 return {
@@ -99,7 +116,7 @@ export default function Navbar({ aesthetic }: NavbarProps) {
         }
     };
 
-    const s = getStyles();
+    const s = getStyles(activeSection);
 
     return (
         <header className={`sticky top-0 z-50 backdrop-blur-md transition-colors duration-500 ${s.headerBg}`}>
@@ -124,8 +141,8 @@ export default function Navbar({ aesthetic }: NavbarProps) {
                                 key={link.name}
                                 href={link.href}
                                 onClick={(e) => handleScroll(e, link.href)}
-                                className={`relative py-1 text-xs font-medium transition-colors duration-200 ${
-                                    aesthetic !== 'neo-brutalism'
+                                className={`relative py-1 text-xs transition-colors duration-200 ${
+                                    aesthetic !== 'neo-brutalism' && aesthetic !== 'neumorphism'
                                         ? 'after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full'
                                         : ''
                                 } ${
@@ -179,7 +196,7 @@ export default function Navbar({ aesthetic }: NavbarProps) {
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleScroll(e, link.href)}
-                                    className={`text-sm font-medium transition ${
+                                    className={`text-sm transition ${
                                         isActive ? s.navActive : s.navInactive
                                     }`}
                                 >
