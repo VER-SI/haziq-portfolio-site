@@ -18,7 +18,7 @@ function ProjectImage({ project, aesthetic }: { project: Project; aesthetic: Des
                     ? 'rounded-none border-2 border-[#341C09] bg-[#FFEBDC] text-[#341C09] shadow-[4px_4px_0px_0px_#341C09]'
                     : isNeumorph
                     ? 'rounded-2xl bg-[#EBECF0] text-[#2D343F] shadow-[inset_4px_4px_8px_#c8c9ce,inset_-4px_-4px_8px_#ffffff]'
-                    : 'rounded-lg border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 shadow-inner'
+                    : 'rounded-xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 shadow-inner'
             }`}>
                 <div className={`flex h-12 w-12 items-center justify-center ${
                     isNeo
@@ -34,7 +34,7 @@ function ProjectImage({ project, aesthetic }: { project: Project; aesthetic: Des
                 <p className={`mt-3 text-sm font-semibold ${isNeo ? 'text-[#341C09]' : isNeumorph ? 'text-[#2D343F]' : 'text-zinc-200'}`}>
                     Confidential Project Preview
                 </p>
-                <p className={`mt-1.5 max-w-xs text-xs leading-5 ${isNeo ? 'text-[#9D4502] font-medium' : isNeumorph ? 'text-[#5A6578]' : 'text-zinc-500'}`}>
+                <p className={`mt-1.5 max-w-xs text-xs leading-5 ${isNeo ? 'text-[#9D4502] font-medium' : isNeumorph ? 'text-[#5A6578]' : 'text-zinc-400'}`}>
                     {project.confidentialNote}
                 </p>
             </div>
@@ -48,14 +48,14 @@ function ProjectImage({ project, aesthetic }: { project: Project; aesthetic: Des
                     ? 'rounded-none border-2 border-[#341C09] bg-[#FFEBDC] text-[#341C09]'
                     : isNeumorph
                     ? 'rounded-2xl bg-[#EBECF0] text-[#2D343F] shadow-[inset_4px_4px_8px_#c8c9ce,inset_-4px_-4px_8px_#ffffff]'
-                    : 'rounded-lg border border-zinc-800 bg-zinc-950'
+                    : 'rounded-xl border border-zinc-800 bg-zinc-950'
             }`}>
                 <div>
-                    <p className={`font-semibold ${isNeo ? 'text-[#341C09]' : isNeumorph ? 'text-[#2D343F]' : 'text-zinc-300'}`}>{project.name}</p>
-                    <p className={`mt-2 text-xs ${isNeo ? 'text-[#9D4502]' : isNeumorph ? 'text-[#5A6578]' : 'text-zinc-500'}`}>
+                    <p className={`font-semibold ${isNeo ? 'text-[#341C09]' : isNeumorph ? 'text-[#2D343F]' : 'text-zinc-200'}`}>{project.name}</p>
+                    <p className={`mt-2 text-xs ${isNeo ? 'text-[#9D4502]' : isNeumorph ? 'text-[#5A6578]' : 'text-zinc-400'}`}>
                         Add a screenshot at
                     </p>
-                    <code className={`mt-1 block text-xs ${isNeo ? 'text-[#FC7307] font-bold bg-[#341C09] px-1.5 py-0.5' : isNeumorph ? 'text-[#F98829] font-bold bg-[#EBECF0] px-2 py-1 rounded' : 'text-orange-400'}`}>
+                    <code className={`mt-1 block text-xs ${isNeo ? 'text-[#FC7307] font-bold bg-[#341C09] px-1.5 py-0.5' : isNeumorph ? 'text-[#F98829] font-bold bg-[#EBECF0] px-2 py-1 rounded' : 'text-orange-400 bg-zinc-800/80 px-2 py-1 rounded'}`}>
                         public{project.image}
                     </code>
                 </div>
@@ -72,7 +72,7 @@ function ProjectImage({ project, aesthetic }: { project: Project; aesthetic: Des
                     ? 'rounded-none border-2 border-[#341C09] shadow-[4px_4px_0px_0px_#341C09]'
                     : isNeumorph
                     ? 'rounded-2xl shadow-[6px_6px_12px_#c8c9ce,-6px_-6px_12px_#ffffff]'
-                    : 'rounded-lg border border-zinc-800 bg-zinc-950'
+                    : 'rounded-xl border border-zinc-800 bg-zinc-950'
             }`}
             onError={() => setImageFailed(true)}
         />
@@ -126,18 +126,18 @@ export default function Projects({ aesthetic }: ProjectsProps) {
             case 'default':
             default:
                 return {
-                    sectionBg: 'bg-zinc-950 text-zinc-100',
+                    sectionBg: 'bg-zinc-900 text-zinc-100',
                     categoryText: 'text-orange-500',
                     titleText: 'text-zinc-100',
                     summaryText: 'text-zinc-400',
-                    cardContainer: 'rounded-xl border border-zinc-800 bg-zinc-900 hover:border-zinc-700',
-                    cardExpanded: 'border-orange-500 bg-orange-500/5 ring-1 ring-orange-500/20',
-                    cardHeaderButton: 'hover:bg-zinc-800/40',
-                    arrowIcon: 'rounded-full border border-zinc-700 text-zinc-400',
-                    tabActive: 'bg-orange-500 text-white',
-                    tabInactive: 'bg-zinc-800 text-zinc-400 hover:text-zinc-200',
-                    badge: 'rounded-md border border-orange-500/20 bg-orange-500/10 text-orange-300',
-                    button: 'rounded-lg border border-orange-500/50 text-orange-400 hover:bg-orange-500/10',
+                    cardContainer: 'rounded-xl border border-zinc-800 bg-zinc-900/90 hover:border-zinc-700 shadow-lg',
+                    cardExpanded: 'rounded-xl border border-orange-500/50 bg-zinc-900 shadow-xl ring-1 ring-orange-500/20',
+                    cardHeaderButton: 'rounded-xl hover:bg-zinc-800/40 transition-colors',
+                    arrowIcon: 'rounded-full border border-zinc-700 bg-zinc-800 text-zinc-400',
+                    tabActive: 'rounded-lg bg-orange-500 text-white font-medium shadow-md shadow-orange-500/20',
+                    tabInactive: 'rounded-lg bg-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-all',
+                    badge: 'rounded-md border border-orange-500/20 bg-orange-500/10 text-orange-300 text-xs font-medium',
+                    button: 'rounded-lg border border-orange-500/50 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 font-medium transition-all',
                     confidentialBadge: 'rounded-lg border border-zinc-800 bg-zinc-950 text-zinc-500 text-xs font-medium',
                     divider: 'border-t border-zinc-800',
                 };
@@ -157,7 +157,7 @@ export default function Projects({ aesthetic }: ProjectsProps) {
                         <h2 className={`mt-2 text-3xl font-bold tracking-tight sm:text-4xl ${s.titleText}`}>
                             Featured Projects
                         </h2>
-                        <div className={`mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : 'bg-white'}`}></div>
+                        <div className={`mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : aesthetic === 'neumorphism' ? 'bg-white' : 'bg-orange-500'}`}></div>
                         <p className={`mt-4 max-w-2xl text-sm leading-7 ${s.summaryText}`}>
                             A collection of full-stack web applications, internal tools, and mobile concepts I’ve engineered. Click a project card to expand its details and explore features.
                         </p>
@@ -177,7 +177,7 @@ export default function Projects({ aesthetic }: ProjectsProps) {
                                     {/* Project header info */}
                                     <div className="mb-4 pl-1">
                                         <h3 className={`text-2xl font-bold ${s.titleText}`}>
-                                            <span className={`mr-2 font-mono ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : 'text-white'}`}>
+                                            <span className={`mr-2 font-mono ${aesthetic === 'neo-brutalism' ? 'text-[#341C09]' : aesthetic === 'neumorphism' ? 'text-white' : 'text-orange-400'}`}>
                                                 {String(index + 1).padStart(2, '0')}.
                                             </span>
                                             {project.name}
@@ -187,12 +187,12 @@ export default function Projects({ aesthetic }: ProjectsProps) {
                                                 {project.category}
                                             </p>
                                             {project.prototypeNote && (
-                                                <span className={`px-2 py-0.5 font-mono text-[10px] font-medium ${
+                                                <span className={`px-2.5 py-0.5 font-mono text-[10px] font-medium ${
                                                     aesthetic === 'neo-brutalism'
                                                         ? 'rounded-none border border-[#341C09] bg-[#FEAB6D] text-[#341C09]'
                                                         : aesthetic === 'neumorphism'
                                                         ? 'rounded-xl bg-[#EBECF0] text-[#2D343F] font-bold shadow-[2px_2px_4px_#d47322,-2px_-2px_4px_#ff9d30]'
-                                                        : 'rounded bg-zinc-800 text-zinc-400'
+                                                        : 'rounded-md border border-zinc-800 bg-zinc-900 text-zinc-400'
                                                 }`}>
                                                     Prototype
                                                 </span>
@@ -235,7 +235,7 @@ export default function Projects({ aesthetic }: ProjectsProps) {
                                                 aria-hidden="true"
                                                 className={`flex h-8 w-8 shrink-0 items-center justify-center transition-all duration-300 ${
                                                     isExpanded
-                                                        ? `${aesthetic === 'neo-brutalism' ? 'rotate-180 border-2 border-[#341C09] bg-[#FC7307] text-[#341C09] font-bold shadow-[2px_2px_0px_0px_#341C09]' : aesthetic === 'neumorphism' ? 'rotate-180 bg-[#F98829] text-white shadow-[inset_2px_2px_4px_#c8c9ce,inset_-2px_-2px_4px_#ffffff]' : 'rotate-180 border-orange-500 bg-orange-500 text-white'}`
+                                                        ? `${aesthetic === 'neo-brutalism' ? 'rotate-180 border-2 border-[#341C09] bg-[#FC7307] text-[#341C09] font-bold shadow-[2px_2px_0px_0px_#341C09]' : aesthetic === 'neumorphism' ? 'rotate-180 bg-[#F98829] text-white shadow-[inset_2px_2px_4px_#d47322,inset_-2px_-2px_4px_#ff9d30]' : 'rotate-180 rounded-full border border-orange-500 bg-orange-500 text-white'}`
                                                         : s.arrowIcon
                                                 }`}
                                             >
@@ -322,7 +322,7 @@ export default function Projects({ aesthetic }: ProjectsProps) {
                                                                             {project.details}
                                                                         </p>
                                                                         {project.prototypeNote && (
-                                                                            <p className={`mt-2 text-xs italic ${aesthetic === 'neo-brutalism' ? 'text-[#9D4502]' : aesthetic === 'neumorphism' ? 'text-[#F98829]' : 'text-orange-400/90'}`}>
+                                                                            <p className={`mt-2 text-xs italic ${aesthetic === 'neo-brutalism' ? 'text-[#9D4502]' : aesthetic === 'neumorphism' ? 'text-[#F98829]' : 'text-orange-400'}`}>
                                                                                 Note: {project.prototypeNote}
                                                                             </p>
                                                                         )}

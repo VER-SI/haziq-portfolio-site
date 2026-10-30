@@ -39,13 +39,13 @@ export default function Contact({ aesthetic }: ContactProps) {
             case 'default':
             default:
                 return {
-                    sectionBg: 'bg-zinc-950 text-zinc-100',
+                    sectionBg: 'bg-zinc-900 text-zinc-100',
                     categoryText: 'text-orange-500',
                     titleText: 'text-zinc-100',
                     summaryText: 'text-zinc-400',
-                    cardContainer: 'rounded-2xl border border-zinc-800 bg-zinc-900 px-6 py-12 text-center shadow-xl shadow-black/20 sm:px-12',
-                    buttonPrimary: 'inline-flex items-center gap-2 rounded-lg bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-orange-500',
-                    buttonSecondary: 'inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-orange-500 hover:text-orange-500',
+                    cardContainer: 'rounded-2xl border border-zinc-800 bg-zinc-900/90 px-6 py-12 text-center shadow-xl shadow-black/20 sm:px-12',
+                    buttonPrimary: 'inline-flex items-center gap-2 rounded-lg bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-orange-500 shadow-md shadow-orange-600/20',
+                    buttonSecondary: 'inline-flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800/80 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-orange-500 hover:text-orange-400 hover:bg-zinc-800',
                     divider: 'border-t border-zinc-800',
                     footerDivider: 'border-t border-zinc-800/80',
                 };
@@ -69,7 +69,7 @@ export default function Contact({ aesthetic }: ContactProps) {
                         <h2 className={`mt-2 text-3xl font-bold tracking-tight sm:text-4xl ${aesthetic === 'neumorphism' ? 'text-[#2D343F]' : s.titleText}`}>
                             Get In Touch
                         </h2>
-                        <div className={`mx-auto mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : aesthetic === 'neumorphism' ? 'bg-[#F98829]' : 'bg-white'}`}></div>
+                        <div className={`mx-auto mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : aesthetic === 'neumorphism' ? 'bg-[#F98829]' : 'bg-orange-500'}`}></div>
                         <p className={`mx-auto mt-4 max-w-xl text-sm leading-7 ${aesthetic === 'neumorphism' ? 'text-[#5A6578]' : s.summaryText}`}>
                             I’m happy to connect about software development,
                             collaboration, or opportunities. Feel free to reach out.

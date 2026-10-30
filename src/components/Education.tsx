@@ -46,14 +46,14 @@ export default function Education({ aesthetic }: EducationProps) {
             case 'default':
             default:
                 return {
-                    sectionBg: 'bg-zinc-950 text-zinc-100',
+                    sectionBg: 'bg-zinc-900 text-zinc-100',
                     categoryText: 'text-orange-500',
                     titleText: 'text-zinc-100',
                     summaryText: 'text-zinc-400',
-                    cardContainer: 'rounded-xl border border-zinc-800 bg-zinc-900 hover:border-zinc-700',
-                    cardExpanded: 'border-orange-500 bg-orange-500/5 ring-1 ring-orange-500/20',
-                    cardHeaderButton: 'hover:bg-zinc-800/40',
-                    arrowIcon: 'rounded-full border border-zinc-700 text-zinc-400',
+                    cardContainer: 'rounded-xl border border-zinc-800 bg-zinc-900/90 hover:border-zinc-700 shadow-lg',
+                    cardExpanded: 'rounded-xl border border-orange-500/50 bg-zinc-900 shadow-xl ring-1 ring-orange-500/20',
+                    cardHeaderButton: 'rounded-xl hover:bg-zinc-800/40 transition-colors',
+                    arrowIcon: 'rounded-full border border-zinc-700 bg-zinc-800 text-zinc-400',
                     badge: 'rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 font-mono text-xs',
                     subjectBadge: 'rounded-md border border-orange-500/20 bg-orange-500/10 text-orange-300 text-xs',
                     divider: 'border-t border-zinc-800',
@@ -74,7 +74,7 @@ export default function Education({ aesthetic }: EducationProps) {
                         <h2 className={`mt-2 text-3xl font-bold tracking-tight sm:text-4xl ${s.titleText}`}>
                             Education &amp; Qualifications
                         </h2>
-                        <div className={`mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : 'bg-white'}`}></div>
+                        <div className={`mt-3 h-1 w-12 rounded-full ${aesthetic === 'neo-brutalism' ? 'bg-[#341C09]' : aesthetic === 'neumorphism' ? 'bg-white' : 'bg-orange-500'}`}></div>
                         <p className={`mt-4 max-w-2xl text-sm leading-7 ${s.summaryText}`}>
                             My formal academic background and qualifications spanning software development, sciences, and leadership. Click an education card to view subjects, grades, and co-curricular activities.
                         </p>
@@ -131,7 +131,7 @@ export default function Education({ aesthetic }: EducationProps) {
                                                         aria-hidden="true"
                                                         className={`flex h-8 w-8 shrink-0 items-center justify-center transition-all duration-300 ${
                                                             isExpanded
-                                                                ? `${aesthetic === 'neo-brutalism' ? 'rotate-180 border-2 border-[#341C09] bg-[#FC7307] text-[#341C09] font-bold shadow-[2px_2px_0px_0px_#341C09]' : aesthetic === 'neumorphism' ? 'rotate-180 bg-[#F98829] text-white shadow-[inset_2px_2px_4px_#c8c9ce,inset_-2px_-2px_4px_#ffffff]' : 'rotate-180 border-orange-500 bg-orange-500 text-white'}`
+                                                                ? `${aesthetic === 'neo-brutalism' ? 'rotate-180 border-2 border-[#341C09] bg-[#FC7307] text-[#341C09] font-bold shadow-[2px_2px_0px_0px_#341C09]' : aesthetic === 'neumorphism' ? 'rotate-180 bg-[#F98829] text-white shadow-[inset_2px_2px_4px_#c8c9ce,inset_-2px_-2px_4px_#ffffff]' : 'rotate-180 rounded-full border border-orange-500 bg-orange-500 text-white'}`
                                                                 : s.arrowIcon
                                                         }`}
                                                     >
