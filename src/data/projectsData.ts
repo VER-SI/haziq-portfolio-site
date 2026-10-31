@@ -80,7 +80,7 @@ export const projects: Project[] = [
         name: 'LifeSync',
         category: 'Cross-Platform Mobile Application',
         summary: 'A cross-platform mobile app combining task/calendar management with expense tracking and routine reminders.',
-        details: 'Built with React Native (Expo) and Firebase, LifeSync was my first individual mobile project. Designed in Figma before implementation, it scales routine scheduling, event management, and personal expense tracking into a cohesive mobile interface.',
+        details: 'My first individual project, Built with React Native (Expo) and Firebase, LifeSync was my first individual mobile project. Designed in Figma before implementation, it scales routine scheduling, event management, and personal expense tracking into a cohesive mobile interface.',
         features: [
             'Firebase Authentication: Complete account sign-up and login management',
             'Cloud Calendar & Tasks: Custom events and tasks saved real-time to Firebase Firestore tied to user account',

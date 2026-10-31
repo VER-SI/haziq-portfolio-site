@@ -67,7 +67,7 @@ function ProjectImage({ project, aesthetic }: { project: Project; aesthetic: Des
         <img
             src={project.image}
             alt={project.imageAlt}
-            className={`aspect-video w-full object-cover ${
+            className={`aspect-video w-full object-contain ${
                 isNeo
                     ? 'rounded-none border-2 border-[#341C09] shadow-[4px_4px_0px_0px_#341C09]'
                     : isNeumorph
